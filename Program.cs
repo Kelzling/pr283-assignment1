@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SudokuAssignment1
+namespace Sudoku
 {
     class Program
     {
@@ -27,9 +27,10 @@ namespace SudokuAssignment1
                 0, 0, 0, 0,
                 4, 0, 2, 0
             };
-            s.Set(testValues2);
+            s.Set(testValues);
 
-            TestValidValuesRetriever();
+            // TestValidValuesRetriever();
+            TestValidityChecker();
         }
 
         static void TestValidValuesRetriever()

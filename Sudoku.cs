@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SudokuAssignment1
+namespace Sudoku
 {
-    class Sudoku
+    class Sudoku : IGame, ISet, IGet, ISerialize
     {
         protected int _sqWidth;
         protected int _sqHeight;
@@ -147,18 +147,25 @@ namespace SudokuAssignment1
         {
             int[] values = new int[_maxNum];
 
-            int index = 0;
-            int i = 0;
+            // int index = 0;
+            // int i = 0;
 
-            while (index < _maxNum)
+            //while (index < _maxNum)
+            //{
+
+            //    if (i % _maxNum == columnNumber)
+            //    {
+            //        values[index] = _grid[i];
+            //        index++;
+            //    }
+
+            //    i++;
+            //}
+
+            for (int i = 0; i < _maxNum; i++)
             {
-                if (i % _maxNum == columnNumber)
-                {
-                    values[index] = _grid[i];
-                    index++;
-                }
-
-                i++;
+                int index = (i * _maxNum) + columnNumber;
+                values[i] = _grid[index];
             }
             
             return values;
@@ -192,6 +199,71 @@ namespace SudokuAssignment1
             }
 
             return values;
+        }
+
+        public void SetMaxValue(int maximum)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetMaxValue()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int[] ToArray()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetSquareWidth(int squareWidth)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetSquareHeight(int squareHeight)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Restart()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetByRow(int rowIndex, int columnIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetBySquare(int squareIndex, int positionIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void FromCSV(string csv)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string ToCSV()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetCell(int value, int gridIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetCell(int gridIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string ToPrettyString()
+        {
+            throw new NotImplementedException();
         }
     }
 }
