@@ -14,8 +14,6 @@ namespace Sudoku
             using (StreamReader reader = new StreamReader(fileName))
             {
                 string fileContents = reader.ReadToEnd();
-                Console.WriteLine(fileContents);
-                Console.ReadKey();
                 return new SudokuManager(fileContents);
             }
         }

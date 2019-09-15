@@ -13,10 +13,7 @@ namespace Sudoku
         protected int sectionWidth;
         protected int[] cellValues;
 
-        public Grid()
-        {
-            Restart();
-        }
+        public Grid() => Restart();
 
         public Grid(int newMaxValue, int newSectionHeight, int newSectionWidth)
         {
