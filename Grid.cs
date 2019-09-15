@@ -59,7 +59,7 @@ namespace Sudoku
             }
         }
 
-        private bool IsValidInput(int value) => 0 < value && value <= maxValue;
+        private bool IsValidInput(int value) => 0 <= value && value <= maxValue;
 
         public int[] GetRow(int rowIndex)
         {
