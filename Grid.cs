@@ -65,6 +65,8 @@ namespace Sudoku
 
         public int[] GetRow(int rowIndex)
         {
+            if (rowIndex < 0 || rowIndex > maxValue - 1) throw new ArgumentOutOfRangeException();
+
             int startIndex = rowIndex * maxValue;
 
             int[] values = new int[maxValue];
@@ -75,6 +77,8 @@ namespace Sudoku
 
         public int[] GetColumn(int columnIndex)
         {
+            if (columnIndex < 0 || columnIndex > maxValue - 1) throw new ArgumentOutOfRangeException();
+
             int[] values = new int[maxValue];
 
             for (int i = 0; i < maxValue; i++)
@@ -88,6 +92,8 @@ namespace Sudoku
 
         public int[] GetSection(int sectionIndex)
         {
+            if (sectionIndex < 0 || sectionIndex > maxValue - 1) throw new ArgumentOutOfRangeException();
+
             int[] values = new int[maxValue];
 
             int sectionsInRow = maxValue / sectionWidth;
