@@ -63,9 +63,11 @@ namespace Sudoku
 
         private bool IsValidInput(int value) => 0 <= value && value <= maxValue;
 
+        private bool IsValidIndex(int index) => 0 <= index && index <= maxValue - 1;
+
         public int[] GetRow(int rowIndex)
         {
-            if (rowIndex < 0 || rowIndex > maxValue - 1) throw new ArgumentOutOfRangeException();
+            if (!IsValidIndex(rowIndex)) throw new ArgumentOutOfRangeException();
 
             int startIndex = rowIndex * maxValue;
 
@@ -77,7 +79,7 @@ namespace Sudoku
 
         public int[] GetColumn(int columnIndex)
         {
-            if (columnIndex < 0 || columnIndex > maxValue - 1) throw new ArgumentOutOfRangeException();
+            if (!IsValidIndex(columnIndex)) throw new ArgumentOutOfRangeException();
 
             int[] values = new int[maxValue];
 
@@ -92,7 +94,7 @@ namespace Sudoku
 
         public int[] GetSection(int sectionIndex)
         {
-            if (sectionIndex < 0 || sectionIndex > maxValue - 1) throw new ArgumentOutOfRangeException();
+            if (!IsValidIndex(sectionIndex)) throw new ArgumentOutOfRangeException();
 
             int[] values = new int[maxValue];
 
