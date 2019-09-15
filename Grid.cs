@@ -33,7 +33,11 @@ namespace Sudoku
 
         public void Set(int[] values) => cellValues = values;
 
-        public void SetMaxValue(int newMaxValue) => maxValue = newMaxValue;
+        public void SetMaxValue(int newMaxValue)
+        {
+            maxValue = newMaxValue;
+            cellValues = new int[maxValue * maxValue];
+        }
 
         public int GetMaxValue() => maxValue;
 
