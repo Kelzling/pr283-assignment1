@@ -53,9 +53,10 @@ namespace Sudoku
             if (IsValidInput(value))
             {
                 cellValues[gridIndex] = value;
-            } else
+            }
+            else
             {
-                // TODO: Throw some form of error
+                throw new ArgumentOutOfRangeException($"Value must be between 0 and {maxValue}");
             }
         }
 
