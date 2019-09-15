@@ -138,5 +138,21 @@ namespace Sudoku
         {
             throw new NotImplementedException();
         }
+
+        public override bool Equals(object obj)
+        {
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+            else
+            {
+                Grid grid = (Grid)obj;
+                return grid.maxValue == maxValue &&
+                    grid.sectionHeight == sectionHeight &&
+                    grid.sectionWidth == sectionWidth &&
+                    grid.cellValues.SequenceEqual(cellValues);
+            }
+        }
     }
 }

@@ -158,5 +158,16 @@ namespace Sudoku.Tests
 
             Assert.That(() => smallGrid.GetSection(testSection), Throws.Exception.TypeOf<ArgumentOutOfRangeException>());
         }
+
+        [Test]
+        public void FromCSV_MatchesExpectedOutput()
+        {
+            string csvContents = smallGrid.ToCSV();
+            Grid testGrid = new Grid();
+
+            testGrid.FromCSV(csvContents);
+
+            Assert.That(testGrid, Is.EqualTo(smallGrid));
+        }
     }
 }
