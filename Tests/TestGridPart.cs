@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 
-namespace Sudoku
+namespace Sudoku.Tests
 {
     class TestGridPart
     {
