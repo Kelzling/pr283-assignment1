@@ -160,7 +160,7 @@ namespace Sudoku.Tests
         }
 
         [Test]
-        public void FromCSV_MatchesExpectedOutput()
+        public void FromCSV_MatchesOriginGrid()
         {
             string csvContents = smallGrid.ToCSV();
             Grid testGrid = new Grid();
