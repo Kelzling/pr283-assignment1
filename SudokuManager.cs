@@ -23,6 +23,8 @@ namespace Sudoku
             myGrid = new Grid();
             myGrid.FromCSV(gridContentsCSV);
             levelTemplate = myGrid.ToArray();
+            Console.Write(myGrid.ToCSV());
+            Console.ReadKey();
         }
 
         public int GetByColumn(int columnIndex, int rowIndex)

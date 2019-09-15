@@ -30,7 +30,9 @@ namespace Sudoku
             s.Set(testValues);
 
             // TestValidValuesRetriever();
-            TestValidityChecker();
+            // TestValidityChecker();
+
+            var sudoku = Loader.LoadLevel(@"C:\Users\Kelsey\source\repos\SudokuAssignment1\SudokuAssignment1\Levels\test1.txt");
         }
 
         static void TestValidValuesRetriever()

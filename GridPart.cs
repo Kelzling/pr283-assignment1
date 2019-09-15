@@ -33,7 +33,7 @@ namespace Sudoku
                 }
             }
 
-            return result
+            return result;
         }
 
         public bool IsComplete()
