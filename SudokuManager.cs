@@ -54,5 +54,55 @@ namespace Sudoku
         {
             throw new NotImplementedException();
         }
+
+        public bool IsCorrect()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsValid()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsComplete()
+        {
+            throw new NotImplementedException();
+        }
+
+        public GridPart Row(int rowIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public GridPart Column(int columnIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public GridPart Section(int sectionIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<int> GetValidValuesForCell(int gridIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<int> GetInvalidValuesForCell(int gridIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RestartLevel()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected bool IsLockedCell(int gridIndex)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
