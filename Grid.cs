@@ -156,5 +156,16 @@ namespace Sudoku
                     grid.cellValues.SequenceEqual(cellValues);
             }
         }
+
+        public override int GetHashCode()
+        {
+            // auto implemented
+            var hashCode = -1453776904;
+            hashCode = hashCode * -1521134295 + maxValue.GetHashCode();
+            hashCode = hashCode * -1521134295 + sectionHeight.GetHashCode();
+            hashCode = hashCode * -1521134295 + sectionWidth.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<int[]>.Default.GetHashCode(cellValues);
+            return hashCode;
+        }
     }
 }
