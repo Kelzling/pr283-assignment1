@@ -137,9 +137,6 @@ namespace Sudoku
             myValues.AddRange(Row(rowIndex).GetInvalidValues());
             myValues.AddRange(Column(columnIndex).GetInvalidValues());
             myValues.AddRange(Section(sectionIndex).GetInvalidValues());
-            /*Row(rowIndex).GetInvalidValues().ForEach((int aValue) => myValues.Add(aValue));
-            Column(columnIndex).GetInvalidValues().ForEach((int aValue) => myValues.Add(aValue));
-            Section(sectionIndex).GetInvalidValues().ForEach((int aValue) => myValues.Add(aValue));*/
 
             return Enumerable.Range(1, maxValue).Where(i => myValues.Contains(i)).ToList();
         }
