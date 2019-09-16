@@ -140,7 +140,47 @@ namespace Sudoku
 
         public string ToPrettyString()
         {
-            throw new NotImplementedException();
+            List<string> prettyRows = new List<string>();
+            for (int i = 0; i < maxValue; i++) prettyRows.Add(RowAsPrettyString(i));
+
+            for (int i = maxValue - 2; i > 0; i--) if (i % sectionHeight == 0) prettyRows.Insert(i, GetPrettyRowSeparator());
+
+            return String.Join("\n", prettyRows.ToArray());
+        }
+
+        private string RowAsPrettyString(int rowIndex)
+        {
+            int[] rowValues = GetRow(rowIndex);
+            
+            List<string> row = new List<string>();
+            foreach (int aValue in rowValues) row.Add(PadPrettyString(aValue.ToString()));
+
+            for (int i = maxValue - 2; i > 0; i--) if (i % sectionWidth == 0) row.Insert(i, "|");
+
+            return String.Join(" ", row.ToArray());
+        }
+
+        private string PadPrettyString(string input)
+        {
+            // ToDo: possible error handling here? assumes no input value is greater than 2 characters in length
+
+            switch (input.Length)
+            {
+                case 1:
+                    return $" {input}";
+                default:
+                    return input;
+            }
+        }
+
+        private string GetPrettyRowSeparator()
+        {
+            List<string> rowSeparator = new List<string>(maxValue);
+            for (int i = 0; i < maxValue; i++) rowSeparator[i] = "--";
+
+            for (int i = maxValue - 2; i > 0; i--) if (i % sectionHeight == 0) rowSeparator.Insert(i, "+");
+
+            return String.Join("-", rowSeparator.ToArray());
         }
 
         public override bool Equals(object obj)
