@@ -25,7 +25,7 @@ namespace Sudoku.Tests
         }
 
         [Test]
-        public void SetCell_ValidValue()
+        public void SetCell_ValidValue_Succeeds()
         {
             int testValue = 1;
             int testIndex = 5;
@@ -37,7 +37,7 @@ namespace Sudoku.Tests
         }
 
         [Test]
-        public void SetCell_LowerBoundaryValue()
+        public void SetCell_LowerBoundaryValue_Succeeds()
         {
             int testValue = 0;
             int testIndex = 4;
@@ -49,7 +49,7 @@ namespace Sudoku.Tests
         }
 
         [Test]
-        public void SetCell_UpperBoundaryValue()
+        public void SetCell_UpperBoundaryValue_Succeeds()
         {
             int testValue = 4;
             int testIndex = 5;
@@ -61,7 +61,7 @@ namespace Sudoku.Tests
         }
 
         [Test]
-        public void SetCell_InvalidValue()
+        public void SetCell_InvalidValue_ThrowsException()
         {
             int testValue = 6;
             int testIndex = 5;
@@ -70,7 +70,7 @@ namespace Sudoku.Tests
         }
 
         [Test]
-        public void GetRow_MiddleRow()
+        public void GetRow_ValidRow_ReturnsExpectedValues()
         {
             int[] expected = { 0, 0, 3, 0 };
             int testRow = 1;
@@ -81,7 +81,18 @@ namespace Sudoku.Tests
         }
 
         [Test]
-        public void GetRow_LastRow()
+        public void GetRow_FirstRow_ReturnsExpectedValues()
+        {
+            int[] expected = { 2, 3, 1, 4 };
+            int testRow = 0;
+
+            int[] actual = smallGrid.GetRow(testRow);
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void GetRow_LastRow_ReturnsExpectedValues()
         {
             int[] expected = { 0, 1, 2, 3 };
             int testRow = 3;
@@ -92,7 +103,7 @@ namespace Sudoku.Tests
         }
 
         [Test]
-        public void GetRow_InvalidRow()
+        public void GetRow_InvalidRow_ThrowsException()
         {
             int testRow = 5;
 
@@ -100,7 +111,7 @@ namespace Sudoku.Tests
         }
 
         [Test]
-        public void GetColumn_FirstColumn()
+        public void GetColumn_FirstColumn_ReturnsExpectedValues()
         {
             int[] expected = { 2, 0, 3, 0 };
             int testColumn = 0;
@@ -111,7 +122,7 @@ namespace Sudoku.Tests
         }
 
         [Test]
-        public void GetColumn_MiddleColumn()
+        public void GetColumn_MiddleColumn_ReturnsExpectedValues()
         {
             int[] expected = { 1, 3, 4, 2 };
             int testColumn = 2;
@@ -122,7 +133,18 @@ namespace Sudoku.Tests
         }
 
         [Test]
-        public void GetColumn_InvalidColumn()
+        public void GetColumn_LastColumn_ReturnsExpectedValues()
+        {
+            int[] expected = { 4, 0, 0, 3 };
+            int testColumn = 3;
+
+            int[] actual = smallGrid.GetColumn(testColumn);
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void GetColumn_InvalidColumn_ThrowsException()
         {
             int testColumn = -3;
 
@@ -130,7 +152,7 @@ namespace Sudoku.Tests
         }
 
         [Test]
-        public void GetSection_FirstSection()
+        public void GetSection_FirstSection_ReturnsExpectedValues()
         {
             int[] expected = { 2, 3, 0, 0 };
             int testSection = 0;
@@ -141,7 +163,18 @@ namespace Sudoku.Tests
         }
 
         [Test]
-        public void GetSection_LastSection()
+        public void GetSection_ValidSection_ReturnsExpectedValues()
+        {
+            int[] expected = { 3, 0, 0, 1 };
+            int testSection = 2;
+
+            int[] actual = smallGrid.GetSection(testSection);
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void GetSection_LastSection_ReturnsExpectedValues()
         {
             int[] expected = { 4, 0, 2, 3 };
             int testSection = 3;
@@ -152,7 +185,7 @@ namespace Sudoku.Tests
         }
 
         [Test]
-        public void GetSection_InvalidSection()
+        public void GetSection_InvalidSection_ThrowsException()
         {
             int testSection = 4;
 
@@ -160,7 +193,7 @@ namespace Sudoku.Tests
         }
 
         [Test]
-        public void FromCSV_MatchesOriginGrid()
+        public void ToCSV_FromCSV_MatchesOriginGrid()
         {
             string csvContents = smallGrid.ToCSV();
             Grid testGrid = new Grid();
