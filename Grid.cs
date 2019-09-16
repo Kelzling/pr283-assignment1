@@ -175,8 +175,8 @@ namespace Sudoku
 
         private string GetPrettyRowSeparator()
         {
-            List<string> rowSeparator = new List<string>(maxValue);
-            for (int i = 0; i < maxValue; i++) rowSeparator[i] = "--";
+            List<string> rowSeparator = new List<string>();
+            for (int i = 0; i < maxValue; i++) rowSeparator.Add("--");
 
             for (int i = maxValue - 2; i > 0; i--) if (i % sectionHeight == 0) rowSeparator.Insert(i, "+");
 
