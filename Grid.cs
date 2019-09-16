@@ -43,6 +43,8 @@ namespace Sudoku
 
         public void SetSquareWidth(int newWidth) => sectionWidth = newWidth;
 
+        public int GetSquareWidth() => sectionWidth;
+
         public void SetSquareHeight(int newHeight) => sectionHeight = newHeight;
 
         public int[] ToArray() => cellValues;

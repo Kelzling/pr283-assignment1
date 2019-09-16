@@ -25,34 +25,52 @@ namespace Sudoku
             levelTemplate = myGrid.ToArray();
         }
 
-        public int GetByColumn(int columnIndex, int rowIndex)
+        protected int GetGridIndex(int rowIndex, int columnIndex)
         {
-            throw new NotImplementedException();
+            int gridIndex = columnIndex * myGrid.GetMaxValue();
+            gridIndex += rowIndex;
+            return gridIndex;
         }
 
-        public int GetByRow(int rowIndex, int columnIndex)
+        protected int GetGridIndexBySquare(int squareIndex, int positionIndex)
         {
-            throw new NotImplementedException();
+            int maxNum = myGrid.GetMaxValue();
+            int sqWidth = myGrid.GetSquareWidth();
+            int sqInRow = maxNum / sqWidth;
+
+            int squareColumnOffset = positionIndex % sqWidth;
+            int squareRowOffset = positionIndex / sqWidth;
+
+            int gridColumnOffset = (squareIndex % sqInRow) * sqWidth;
+            int gridRowOffset = (squareIndex / sqInRow) * sqWidth;
+
+            int columnIndex = squareColumnOffset + gridColumnOffset;
+            int rowIndex = squareRowOffset + gridRowOffset;
+
+            return GetGridIndex(rowIndex, columnIndex);
         }
 
-        public int GetBySquare(int squareIndex, int positionIndex)
-        {
-            throw new NotImplementedException();
-        }
+        public int GetByColumn(int columnIndex, int rowIndex) => myGrid.GetCell(GetGridIndex(rowIndex, columnIndex));
+
+        public int GetByRow(int rowIndex, int columnIndex) => myGrid.GetCell(GetGridIndex(rowIndex, columnIndex));
+
+        public int GetBySquare(int squareIndex, int positionIndex) => myGrid.GetCell(GetGridIndexBySquare(squareIndex, positionIndex));
 
         public void SetByColumn(int value, int columnIndex, int rowIndex)
         {
-            throw new NotImplementedException();
+            int gridIndex = GetGridIndex(rowIndex, columnIndex);
+            myGrid.SetCell(value, gridIndex);
         }
 
         public void SetByRow(int value, int rowIndex, int columnIndex)
         {
-            throw new NotImplementedException();
+            SetByColumn(value, columnIndex, rowIndex);
         }
 
         public void SetBySquare(int value, int squareIndex, int positionIndex)
         {
-            throw new NotImplementedException();
+            int gridIndex = GetGridIndexBySquare(squareIndex, positionIndex);
+            myGrid.SetCell(value, gridIndex);
         }
 
         public bool IsCorrect()
@@ -70,20 +88,11 @@ namespace Sudoku
             throw new NotImplementedException();
         }
 
-        public GridPart Row(int rowIndex)
-        {
-            throw new NotImplementedException();
-        }
+        public GridPart Row(int rowIndex) => new GridPart(myGrid.GetRow(rowIndex));
 
-        public GridPart Column(int columnIndex)
-        {
-            throw new NotImplementedException();
-        }
+        public GridPart Column(int columnIndex) => new GridPart(myGrid.GetColumn(columnIndex));
 
-        public GridPart Section(int sectionIndex)
-        {
-            throw new NotImplementedException();
-        }
+        public GridPart Section(int sectionIndex) => new GridPart(myGrid.GetSection(sectionIndex));
 
         public List<int> GetValidValuesForCell(int gridIndex)
         {

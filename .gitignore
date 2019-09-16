@@ -1,4 +1,10 @@
-*.csproj
+# VisualStudio files
+*.csproj*
+*.sln
+
+# Generated Directories
 Properties/
 obj/
 bin/
+packages/
+.vs/
