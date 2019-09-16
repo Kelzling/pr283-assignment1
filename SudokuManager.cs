@@ -75,17 +75,38 @@ namespace Sudoku
 
         public bool IsCorrect()
         {
-            throw new NotImplementedException();
+            int maxValue = myGrid.GetMaxValue();
+            for (int i = 0; i < maxValue; i++)
+            {
+                if (!Row(i).IsCorrect()) return false;
+                if (!Column(i).IsCorrect()) return false;
+                if (!Section(i).IsCorrect()) return false;
+            }
+            return true;
         }
 
         public bool IsValid()
         {
-            throw new NotImplementedException();
+            int maxValue = myGrid.GetMaxValue();
+            for (int i = 0; i < maxValue; i++)
+            {
+                if (!Row(i).IsValid()) return false;
+                if (!Column(i).IsValid()) return false;
+                if (!Section(i).IsValid()) return false;
+            }
+            return true;
         }
 
         public bool IsComplete()
         {
-            throw new NotImplementedException();
+            int maxValue = myGrid.GetMaxValue();
+            for (int i = 0; i < maxValue; i++)
+            {
+                if (!Row(i).IsComplete()) return false;
+                if (!Column(i).IsComplete()) return false;
+                if (!Section(i).IsComplete()) return false;
+            }
+            return true;
         }
 
         public GridPart Row(int rowIndex) => new GridPart(myGrid.GetRow(rowIndex));
@@ -96,22 +117,35 @@ namespace Sudoku
 
         public List<int> GetValidValuesForCell(int gridIndex)
         {
-            throw new NotImplementedException();
+            int maxValue = myGrid.GetMaxValue();
+            List<int> myValues = GetInvalidValuesForCell(gridIndex);
+
+            return Enumerable.Range(1, maxValue).Where(i => !myValues.Contains(i)).ToList();
         }
 
         public List<int> GetInvalidValuesForCell(int gridIndex)
         {
-            throw new NotImplementedException();
+            int maxValue = myGrid.GetMaxValue();
+            int sectionWidth = myGrid.GetSquareWidth();
+            int sectionHeight = maxValue / sectionWidth;
+
+            int columnIndex = gridIndex % maxValue;
+            int rowIndex = gridIndex / maxValue;
+            int sectionIndex = (columnIndex / sectionWidth) + (rowIndex / sectionHeight);
+
+            List<int> myValues = new List<int>();
+            Row(rowIndex).GetInvalidValues().ForEach((int aValue) => myValues.Add(aValue));
+            Column(columnIndex).GetInvalidValues().ForEach((int aValue) => myValues.Add(aValue));
+            Section(sectionIndex).GetInvalidValues().ForEach((int aValue) => myValues.Add(aValue));
+
+            return Enumerable.Range(1, maxValue).Where(i => myValues.Contains(i)).ToList();
         }
 
         public void RestartLevel()
         {
-            throw new NotImplementedException();
+            myGrid.Set(levelTemplate);
         }
 
-        protected bool IsLockedCell(int gridIndex)
-        {
-            throw new NotImplementedException();
-        }
+        protected bool IsLockedCell(int gridIndex) => levelTemplate[gridIndex] > 0;
     }
 }
