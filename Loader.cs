@@ -9,9 +9,9 @@ namespace Sudoku
 {
     static class Loader
     {
-        static public SudokuManager LoadLevel(string fileName)
+        static public SudokuManager LoadLevel(string filePath)
         {
-            using (StreamReader reader = new StreamReader(fileName))
+            using (StreamReader reader = new StreamReader(filePath))
             {
                 string fileContents = reader.ReadToEnd();
                 return new SudokuManager(fileContents);
