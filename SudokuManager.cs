@@ -27,8 +27,8 @@ namespace Sudoku
 
         protected int GetGridIndex(int rowIndex, int columnIndex)
         {
-            int gridIndex = columnIndex * myGrid.GetMaxValue();
-            gridIndex += rowIndex;
+            int gridIndex = rowIndex * myGrid.GetMaxValue();
+            gridIndex += columnIndex;
             return gridIndex;
         }
 
@@ -134,9 +134,12 @@ namespace Sudoku
             int sectionIndex = (columnIndex / sectionWidth) + (rowIndex / sectionHeight);
 
             List<int> myValues = new List<int>();
-            Row(rowIndex).GetInvalidValues().ForEach((int aValue) => myValues.Add(aValue));
+            myValues.AddRange(Row(rowIndex).GetInvalidValues());
+            myValues.AddRange(Column(columnIndex).GetInvalidValues());
+            myValues.AddRange(Section(sectionIndex).GetInvalidValues());
+            /*Row(rowIndex).GetInvalidValues().ForEach((int aValue) => myValues.Add(aValue));
             Column(columnIndex).GetInvalidValues().ForEach((int aValue) => myValues.Add(aValue));
-            Section(sectionIndex).GetInvalidValues().ForEach((int aValue) => myValues.Add(aValue));
+            Section(sectionIndex).GetInvalidValues().ForEach((int aValue) => myValues.Add(aValue));*/
 
             return Enumerable.Range(1, maxValue).Where(i => myValues.Contains(i)).ToList();
         }
