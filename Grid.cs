@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -125,6 +126,7 @@ namespace Sudoku
         {
             // this code currently presumes that the incoming data is going to match the expected format
             // to do - make it a bit more sensible?
+            // decision - not going to allow user uploading of files. Naive implementation with assertions is ok for this use case.
 
             string[] lines = csv.Split('\n');
 
@@ -134,6 +136,10 @@ namespace Sudoku
             sectionWidth = gridInfo[2];
 
             cellValues = lines[1].Split(',').Select(Int32.Parse).ToArray();
+
+            // post conditions for a valid game set up
+            Trace.Assert(maxValue == sectionHeight * sectionWidth);
+            Trace.Assert(cellValues.Length == maxValue * maxValue);
         }
 
         public string ToCSV() => $"{maxValue},{sectionHeight},{sectionWidth}\n{String.Join(",", cellValues)}";
