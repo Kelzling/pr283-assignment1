@@ -16,7 +16,10 @@ namespace Sudoku.Tests
         [SetUp]
         protected void SetUp()
         {
-            string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Levels");
+            string binDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string projectDirectory = Directory.GetParent(binDirectory).Parent.Parent.FullName;
+            string basePath = Path.Combine(projectDirectory, "Levels");
+
             goodSudoku = Loader.LoadLevel($@"{basePath}\test1.txt");
             badSudoku = Loader.LoadLevel($@"{basePath}\test2.txt");
         }

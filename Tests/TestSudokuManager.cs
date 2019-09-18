@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,8 +16,12 @@ namespace Sudoku.Tests
         [SetUp]
         protected void SetUp()
         {
-            goodSudoku = Loader.LoadLevel(@"C:\Users\words\OneDrive - Ara Institute of Canterbury\BICT Private Folders\Semester 4\PR283 dotNET\Projects\cs293-assignment1\Levels\test1.txt");
-            badSudoku = Loader.LoadLevel(@"C:\Users\words\OneDrive - Ara Institute of Canterbury\BICT Private Folders\Semester 4\PR283 dotNET\Projects\cs293-assignment1\Levels\test2.txt");
+            string binDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string projectDirectory = Directory.GetParent(binDirectory).Parent.Parent.FullName;
+            string basePath = Path.Combine(projectDirectory, "Levels");
+
+            goodSudoku = Loader.LoadLevel($@"{basePath}\test1.txt");
+            badSudoku = Loader.LoadLevel($@"{basePath}\test2.txt");
         }
 
         [Test]

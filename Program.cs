@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,8 +32,11 @@ namespace Sudoku
 
             // TestValidValuesRetriever();
             // TestValidityChecker();
+            string binDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string projectDirectory = Directory.GetParent(binDirectory).Parent.Parent.FullName;
+            string basePath = Path.Combine(projectDirectory, "Levels");
 
-            var sudoku = Loader.LoadLevel(@"C:\Users\Kelsey\source\repos\SudokuAssignment1\SudokuAssignment1\Levels\test1.txt");
+            var sudoku = Loader.LoadLevel($@"{basePath}\test1.txt");
         }
 
         static void TestValidValuesRetriever()
