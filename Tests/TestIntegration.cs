@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,8 +16,9 @@ namespace Sudoku.Tests
         [SetUp]
         protected void SetUp()
         {
-            goodSudoku = Loader.LoadLevel(@"C:\Users\Kelsey\source\repos\SudokuAssignment1\SudokuAssignment1\Levels\test1.txt");
-            badSudoku = Loader.LoadLevel(@"C:\Users\Kelsey\source\repos\SudokuAssignment1\SudokuAssignment1\Levels\test2.txt");
+            string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Levels");
+            goodSudoku = Loader.LoadLevel($@"{basePath}\test1.txt");
+            badSudoku = Loader.LoadLevel($@"{basePath}\test2.txt");
         }
 
         // test the Row(index).IsValid() etc combinations
