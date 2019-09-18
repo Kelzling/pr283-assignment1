@@ -143,5 +143,38 @@ namespace Sudoku.Tests
 
             Assert.That(actual, Is.EqualTo(expected));
         }
+
+        [Test]
+        public void FirstColumnSecondCell_SetByColumn_SetsFirstColumnSecondCell()
+        {
+            int setVal = 0;
+            goodSudoku.SetByColumn(setVal, 0, 1);
+
+            int actual = goodSudoku.GetByColumn(0, 1);
+
+            Assert.That(actual, Is.EqualTo(setVal));
+        }
+
+        [Test]
+        public void FirstColumnSecondCell_SetByRow_SetsFirstColumnSecondCelll()
+        {
+            int setVal = 0;
+            goodSudoku.SetByRow(setVal, 1, 0);
+
+            int actual = goodSudoku.GetByRow(1, 0);
+
+            Assert.That(actual, Is.EqualTo(setVal));
+        }
+
+        [Test]
+        public void FirstColumnSecondCell_SetBySquare_SetsFirstColumnSecondCell()
+        {
+            int setVal = 0;
+            goodSudoku.SetBySquare(setVal, 0, 2);
+
+            int actual = goodSudoku.GetBySquare(0, 2);
+
+            Assert.That(actual, Is.EqualTo(setVal));
+        }
     }
 }
