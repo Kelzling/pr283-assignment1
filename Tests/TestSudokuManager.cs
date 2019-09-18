@@ -20,7 +20,7 @@ namespace Sudoku.Tests
             string projectDirectory = Directory.GetParent(binDirectory).Parent.Parent.FullName;
             string basePath = Path.Combine(projectDirectory, "Levels");
 
-            goodSudoku = Loader.LoadLevel($@"{basePath}\test1.txt");
+            goodSudoku = Loader.LoadLevel($@"{basePath}\test3.txt");
             badSudoku = Loader.LoadLevel($@"{basePath}\test2.txt");
         }
 
@@ -37,7 +37,7 @@ namespace Sudoku.Tests
         [Test]
         public void FirstColumnSecondCell_GetByColumn_IsFirstColumnSecondCell()
         {
-            int expected = 0;
+            int expected = 1;
 
             int actual = goodSudoku.GetByColumn(0, 1);
 
@@ -77,7 +77,7 @@ namespace Sudoku.Tests
         [Test]
         public void FirstColumnSecondCell_GetByRow_IsFirstColumnSecondCell()
         {
-            int expected = 0;
+            int expected = 1;
 
             int actual = goodSudoku.GetByRow(1, 0);
 
@@ -117,7 +117,7 @@ namespace Sudoku.Tests
         [Test]
         public void FirstColumnSecondCell_GetBySquare_IsFirstColumnSecondCell()
         {
-            int expected = 0;
+            int expected = 1;
 
             int actual = goodSudoku.GetBySquare(0, 2);
 
@@ -175,6 +175,66 @@ namespace Sudoku.Tests
             int actual = goodSudoku.GetBySquare(0, 2);
 
             Assert.That(actual, Is.EqualTo(setVal));
+        }
+
+        [Test]
+        public void GoodSudoku_IsValid_ReturnsTrue()
+        {
+            bool expected = true;
+
+            bool actual = goodSudoku.IsValid();
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void BadSudoku_IsValid_ReturnsFalse()
+        {
+            bool expected = false;
+
+            bool actual = badSudoku.IsValid();
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void GoodSudoku_IsComplete_ReturnsTrue()
+        {
+            bool expected = true;
+
+            bool actual = goodSudoku.IsComplete();
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void BadSudoku_IsComplete_ReturnsFalse()
+        {
+            bool expected = false;
+
+            bool actual = badSudoku.IsComplete();
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void GoodSudoku_IsCorrect_ReturnsTrue()
+        {
+            bool expected = true;
+
+            bool actual = goodSudoku.IsCorrect();
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void BadSudoku_IsCorrect_ReturnsFalse()
+        {
+            bool expected = false;
+
+            bool actual = badSudoku.IsCorrect();
+
+            Assert.That(actual, Is.EqualTo(expected));
         }
     }
 }
