@@ -15,8 +15,8 @@ namespace Sudoku.Tests
         [SetUp]
         protected void SetUp()
         {
-            goodSudoku = Loader.LoadLevel(@"C:\Users\Kelsey\source\repos\SudokuAssignment1\SudokuAssignment1\Levels\test1.txt");
-            badSudoku = Loader.LoadLevel(@"C:\Users\Kelsey\source\repos\SudokuAssignment1\SudokuAssignment1\Levels\test2.txt");
+            goodSudoku = Loader.LoadLevel(@"C:\Users\words\OneDrive - Ara Institute of Canterbury\BICT Private Folders\Semester 4\PR283 dotNET\Projects\cs293-assignment1\Levels\test1.txt");
+            badSudoku = Loader.LoadLevel(@"C:\Users\words\OneDrive - Ara Institute of Canterbury\BICT Private Folders\Semester 4\PR283 dotNET\Projects\cs293-assignment1\Levels\test2.txt");
         }
 
         // test the Row(index).IsValid() etc combinations

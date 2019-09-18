@@ -8,3 +8,6 @@ obj/
 bin/
 packages/
 .vs/
+MigrationBackup/*
+
+Documentation/*
