@@ -10,6 +10,7 @@ namespace Sudoku.Tests
 {
     class TestSudokuManager
     {
+        private SudokuManager incompleteSudoku;
         private SudokuManager goodSudoku;
         private SudokuManager badSudoku;
 
@@ -20,6 +21,7 @@ namespace Sudoku.Tests
             string projectDirectory = Directory.GetParent(binDirectory).Parent.Parent.FullName;
             string basePath = Path.Combine(projectDirectory, "Levels");
 
+            incompleteSudoku = Loader.LoadLevel($@"{basePath}\test1.txt");
             goodSudoku = Loader.LoadLevel($@"{basePath}\test3.txt");
             badSudoku = Loader.LoadLevel($@"{basePath}\test2.txt");
         }
@@ -235,6 +237,30 @@ namespace Sudoku.Tests
             bool actual = badSudoku.IsCorrect();
 
             Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void IncompleteSudoku_GetInvalidValues_ReturnsInvalidValues()
+        {
+            int testCell = 5;
+
+            List<int> expected = new List<int>(){ 1, 2, 3 };
+
+            List<int> actual = incompleteSudoku.GetInvalidValuesForCell(testCell);
+
+            Assert.That(actual, Is.EquivalentTo(expected));
+        }
+
+        [Test]
+        public void IncompleteSudoku_GetValidValues_ReturnsValidValues()
+        {
+            int testCell = 5;
+
+            List<int> expected = new List<int>() { 4 };
+
+            List<int> actual = incompleteSudoku.GetValidValuesForCell(testCell);
+
+            Assert.That(actual, Is.EquivalentTo(expected));
         }
     }
 }
