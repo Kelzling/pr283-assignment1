@@ -16,14 +16,9 @@ namespace Sudoku.Tests
         [SetUp]
         protected void SetUp()
         {
-<<<<<<< HEAD
-            goodSudoku = Loader.LoadLevel(@"C:\Users\words\OneDrive - Ara Institute of Canterbury\BICT Private Folders\Semester 4\PR283 dotNET\Projects\cs293-assignment1\Levels\test1.txt");
-            badSudoku = Loader.LoadLevel(@"C:\Users\words\OneDrive - Ara Institute of Canterbury\BICT Private Folders\Semester 4\PR283 dotNET\Projects\cs293-assignment1\Levels\test2.txt");
-=======
             string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Levels");
             goodSudoku = Loader.LoadLevel($@"{basePath}\test1.txt");
             badSudoku = Loader.LoadLevel($@"{basePath}\test2.txt");
->>>>>>> 0bd35f1323c470e61e389a45a214ef69d2315ab0
         }
 
         // test the Row(index).IsValid() etc combinations
